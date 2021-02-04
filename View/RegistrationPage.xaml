@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DemoNewsApp.RegistrationPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Frame HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="25" CornerRadius="15" HasShadow="True" Padding="0">
+        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" WidthRequest="400">
+                <Entry Placeholder="Name" Text="{Binding Name, Mode=TwoWay}" Keyboard="Chat" HorizontalOptions="Fill" Margin="20,30,20,0"/>
+                <Entry Placeholder="Designation" Text="{Binding Designation, Mode=TwoWay}" Keyboard="Chat" HorizontalOptions="Fill" Margin="20,30,20,0"/>
+                <Entry Placeholder="Email" Text="{Binding Email, Mode=TwoWay}" Keyboard="Email" HorizontalOptions="Fill" Margin="20,30,20,0"/>
+                <Entry Placeholder="Mobile" Text="{Binding Mobile, Mode=TwoWay}" Keyboard="Telephone" HorizontalOptions="Fill" Margin="20,30,20,0"/>
+                
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Margin="20,30,20,30">
+                    <Button Text="Cancel" Command="{Binding CancelCommand}" BackgroundColor="Gray" Padding="8" WidthRequest="120" TextColor="White" HorizontalOptions="StartAndExpand"/>
+                    <Button Text="Save" Command="{Binding SaveCommand}" CommandParameter="{Binding CanSave}" BackgroundColor="Blue" Padding="8" WidthRequest="120" TextColor="White" HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+
+            </StackLayout>
+        </Frame>
+    </ContentPage.Content>
+</ContentPage>

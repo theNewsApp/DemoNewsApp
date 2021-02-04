@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DemoNewsApp.UserListPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <ScrollView Grid.Row="0">
+                <StackLayout BindableLayout.ItemsSource="{Binding Users}" Margin="15" >
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Frame CornerRadius="0"  HasShadow="True"  Padding="0" Margin="10">
+                                <Grid  Padding="15" HeightRequest="120" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="18" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" Grid.Row="0" Grid.Column="0"/>
+                                <Label Text="{Binding Designation}" Grid.Row="1" Grid.Column="0"/>
+                                <Label Text="{Binding Email}" Grid.Row="2" Grid.Column="0"/>
+                                <Label Text="{Binding Mobile}" Grid.Row="3" Grid.Column="0"/>
+                            </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
+            <Button Grid.Row="0" Text="Add User" Command="{Binding AddUserCommand}" TextColor="White" BackgroundColor="Green" HeightRequest="60" WidthRequest="140" 
+                    HorizontalOptions="End" VerticalOptions="End" CornerRadius="30" Margin="0,0,20,20"/>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

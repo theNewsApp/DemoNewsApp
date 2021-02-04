@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DemoNewsApp.NewsListPage"
+             x:Name="NewsPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <ListView ItemsSource="{Binding Feeds}" Margin="15" Grid.Row="0"
+                      SeparatorVisibility="None" SelectionMode="None" RowHeight="180" ItemAppearing="ListView_ItemAppearing">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                    <ViewCell>
+                        <Frame CornerRadius="0"  HasShadow="True"  Padding="0" Margin="10">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Path=BindingContext.NewsClickCommand, Source={x:Reference NewsPage}}" CommandParameter="{Binding .}"/>
+                            </Frame.GestureRecognizers>
+                            <Grid  Padding="15" HeightRequest="120" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="7*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding title}" FontAttributes="Bold" FontSize="14" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" Grid.Row="0" Grid.Column="0"/>
+                                <Label Text="{Binding description}" Grid.Row="1" Grid.Column="0"/>
+                                <Image Source="{Binding urlToImage}" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Aspect="AspectFill" Margin="3"/>
+
+                            </Grid>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="New Feeds" BackgroundColor="Gray" TextColor="Black" HeightRequest="40" CornerRadius="20" Command="{Binding NewFeedCommand}" IsVisible="{Binding IsNewFeedAvailable}" HorizontalOptions="Center" VerticalOptions="Start" Margin="5"/>
+            <Button Text="{Binding LoadText}" BackgroundColor="Gray" TextColor="Black" HeightRequest="40" CornerRadius="20" Command="{Binding LoadMoreCommand}" IsVisible="{Binding IsLoadMoreNeed}" HorizontalOptions="Center" VerticalOptions="End" Margin="5"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
